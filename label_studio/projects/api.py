@@ -442,9 +442,7 @@ class ProjectNextTaskAPI(generics.RetrieveAPIView):
 
             # if there any tasks in progress (with maximum number of annotations), randomly sampling from them
             logger.debug(f'User={request.user} tries depth first from {not_solved_tasks_count} tasks')
-            next_task = self._try_breadth_first(not_solved_tasks)
-            if next_task:
-                return self._make_response(next_task, request)
+      
 
             if project.sampling == project.UNCERTAINTY:
                 logger.debug(f'User={request.user} tries uncertainty sampling from {not_solved_tasks_count} tasks')
